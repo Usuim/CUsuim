@@ -84,3 +84,8 @@ map("i", "<C-ScrollWheelUp>", "<c-o>:BufferLineMoveNext<CR>")
 
 map("n", "<C-ScrollWheelDown>", ":BufferLineMovePrev<CR>")
 map("i", "<C-ScrollWheelDown>", "<c-o>:BufferLineMovePrev<CR>")
+
+-- Contextual Menu
+map("n", "<RightMouse>", "<cmd>:popup Usuim<CR>")
+map("i", "<RightMouse>", "<cmd>:popup Usuim<CR>")
+map("v", "<RightMouse>", "<cmd>:popup VUsuim<CR>")

@@ -36,6 +36,9 @@ local plugins = {
   {
     "Usuim/toggleterm.nvim",
   },
+  {
+    "voldikss/vim-floaterm"
+  },
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
