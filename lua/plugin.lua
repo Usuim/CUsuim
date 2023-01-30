@@ -60,6 +60,13 @@ local plugins = {
     config = function ()
       require("plugins.bufferline")
     end
+  },
+  -- Feline bar
+  {
+    "feline-nvim/feline.nvim",
+    config = function ()
+      require("plugins.feline")
+    end
   }
 }
 

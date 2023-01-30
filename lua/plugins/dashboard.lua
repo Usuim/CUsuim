@@ -12,7 +12,8 @@ g.dashboard_custom_header = {
 "░         ░░░ ░ ░ ░  ░  ░   ░░░ ░ ░  ▒ ░░      ░",
 "░ ░         ░           ░     ░      ░         ░",
 "░",
-""
+"",
+"            Usuim for C/C++ development        "
 }
 
 g.dashboard_default_executive ='telescope'
