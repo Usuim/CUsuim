@@ -17,3 +17,7 @@ map("i", "<F2>", "<CMD>:NvimTreeToggle<CR>")
 -- Ctrl+Delete
 map("i", "<C-BS>", "<C-w>")
 map("i", "<C-h>", "<C-w>")
+
+-- Close buffer
+map("n", "<C-Q>", "<cmd>:lua closeBuffer(vim.api.nvim_get_current_buf())<CR>")
+map("i", "<C-Q>", "<cmd>:lua closeBuffer(vim.api.nvim_get_current_buf())<CR>")

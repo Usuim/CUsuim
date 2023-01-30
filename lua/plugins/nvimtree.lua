@@ -68,7 +68,7 @@ require'nvim-tree'.setup {
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
         exclude = {
           filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame", "lazy" },
-          buftype  = { "nofile", "Term", "help", },
+          buftype  = { "nofile", "terminal", "help", },
         }
       }
     }

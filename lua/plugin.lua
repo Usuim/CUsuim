@@ -27,13 +27,10 @@ local plugins = {
   --NvimTree
   {
     'Usuim/nvim-tree.lua',
+    dependencies = { "nvim-tree/nvim-web-devicons"},
     config = function()
       require('plugins.nvimtree')
     end
-  },
-  --Dev icons
-  {
-    "nvim-tree/nvim-web-devicons"
   },
   --Terminal
   {
@@ -52,6 +49,16 @@ local plugins = {
     "Usuim/dashboard-nvim",
     config = function ()
       require("plugins.dashboard")
+    end
+  },
+  -- Bufferline
+  {
+    "akinsho/bufferline.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons"
+    },
+    config = function ()
+      require("plugins.bufferline")
     end
   }
 }
