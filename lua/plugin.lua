@@ -34,6 +34,25 @@ local plugins = {
   --Dev icons
   {
     "nvim-tree/nvim-web-devicons"
+  },
+  --Terminal
+  {
+    "Usuim/toggleterm.nvim",
+  },
+  -- Treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = function ()
+      require("plugins.treesitter")
+    end
+  },
+  -- Dashboard
+  {
+    "Usuim/dashboard-nvim",
+    config = function ()
+      require("plugins.dashboard")
+    end
   }
 }
 
