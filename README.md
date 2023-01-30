@@ -9,5 +9,5 @@
 </kbd>
 
 <kbd>
-  <img src="https://user-images.githubusercontent.com/59105868/215407135-5a41f7a7-2fae-488d-83c1-11f4d153f862.png" />
+  <img src="https://user-images.githubusercontent.com/59105868/215412024-30f22bbc-5794-4e16-9fe5-3e5cbfa106c6.png" />
 </kbd>
