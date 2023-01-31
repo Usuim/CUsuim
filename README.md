@@ -1,3 +1,13 @@
+# Important
+
+**you should install the configuration in:** `~/.config/cusuim`
+
+**and run:** `nvim -u $HOME/.config/cusuim/init.lua`
+
+**otherwise it won't work**
+
+*then i will make it work in any directory*
+
 <h1 align="center">Preview</h1>
 
 <kbd>
