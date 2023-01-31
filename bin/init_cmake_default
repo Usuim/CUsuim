@@ -39,8 +39,8 @@ add_executable(app \${SRC})
 target_link_libraries(app)
 " >> CMakeLists.txt
 
-echo "#include <HelloWorld.hpp>
-#include <iostream>
+echo "#include <iostream>
+#include \"HelloWorld.hpp\"
 
 int main() {
   HelloWorld *hello = new HelloWorld(\"Hello World!\");
@@ -49,21 +49,26 @@ int main() {
 }
 " >> src/main.cpp
 
-echo "#include <iostream>
+echo "#ifndef HELLOWORLD_HPP
+#define HELLOWORLD_HPP
+
+#include <iostream>
 
 class HelloWorld {
   public:
-    HelloWorld(std::string _name);
+    HelloWorld(std::string _msg);
     std::string hello();
   private:
     std::string m_msg;
 };
+
+#endif
 " >> include/HelloWorld.hpp
 
-echo "#include <HelloWorld.hpp>
+echo "#include \"HelloWorld.hpp\"
 
-HelloWorld::HelloWorld(std::string _name) {
-  this->m_msg = _name;
+HelloWorld::HelloWorld(std::string _msg) {
+  this->m_msg = _msg;
 }
 
 std::string HelloWorld::hello() {
@@ -72,9 +77,11 @@ std::string HelloWorld::hello() {
 " >> src/HelloWorld.cpp
 
 echo '{
-  "run": "cd build && make && ./app",
+  "run": "cd build && ./app",
 
   "build": "mkdir -p build/ && cd build && cmake .. && make",
+
+  "buildandrun": "mkdir -p build/ && cd build && cmake .. && make && ./app",
 
   "upclangd": "mkdir -p build && cd build && cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .. && mv compile_commands.json .."
 }
