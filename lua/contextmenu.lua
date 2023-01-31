@@ -38,4 +38,5 @@ vim.cmd([[aunmenu PopUp]])
 -- Tasks
 vim.cmd([[:amenu 100.100 Tasks.Run <cmd>:lua RunCode()<CR>]])
 vim.cmd([[:amenu 100.100 Tasks.Build <cmd>:lua BuildCode()<CR>]])
+vim.cmd([[:amenu 100.100 Tasks.Build\ and\ Run <cmd>:lua BuildAndRun()<CR>]])
 vim.cmd([[:amenu 100.100 Tasks.Update\ Clangd\ Paths <cmd>:lua UpClangd()<CR>]])

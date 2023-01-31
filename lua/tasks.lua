@@ -7,10 +7,18 @@ end
 
 local path = string.format("%s/.cusuim.json",vim.fn.getcwd())
 
+vim.notify = require("notify")
+local notfiy_name = "CUsuim"
+
 function RunCode()
   local handle = io.popen(string.format("jq -r '.run' %s", path))
   local result = handle:read("*a")
   handle:close()
+
+  vim.notify("Running...", "", {
+    title = notfiy_name,
+    timeout = 500
+  })
 
   vim.cmd(":FloatermNew --autoclose=0 " .. result)
 end
@@ -19,6 +27,24 @@ function BuildCode()
   local handle = io.popen(string.format("jq -r '.build' %s", path))
   local result = handle:read("*a")
   handle:close()
+
+  vim.notify("Building...", "", {
+    title = notfiy_name,
+    timeout = 500
+  })
+
+  vim.cmd(":FloatermNew --autoclose=0 " .. result)
+end
+
+function BuildAndRun()
+  local handle = io.popen(string.format("jq -r '.buildandrun' %s", path))
+  local result = handle:read("*a")
+  handle:close()
+
+  vim.notify("Building and Running...", "", {
+    title = notfiy_name,
+    timeout = 500
+  })
 
   vim.cmd(":FloatermNew --autoclose=0 " .. result)
 end
@@ -38,9 +64,6 @@ function createProject(cmd)
   local result = handle:read("*a")
   handle:close()
 
-  vim.notify = require("notify")
-  local name = "CUsuim"
-
   local status = result:gsub("[\n\r]", "")
 
   if status == "Empty" then
@@ -49,11 +72,11 @@ function createProject(cmd)
 
 
     vim.notify("Project created", "", {
-      title = name
+      title = notfiy_name
     })
   else
     vim.notify("Directory is not empty", "error", {
-      title = name
+      title = notfiy_name
     })
   end
 
