@@ -10,7 +10,7 @@ end
 require("utils.clipboard")
 
 -- Terminal
-map("n", "<c-t>", "<C-u>silent! :ToggleTerm size=10<CR>", { silent = true })
+map("n", "<c-t>", ":<C-u>silent! :ToggleTerm size=10<CR>", { silent = true })
 map("i", "<c-t>", "<c-o>:<C-u>silent! :ToggleTerm size=10<CR>", { silent = true })
 
 -- NvimTree

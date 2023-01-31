@@ -70,6 +70,62 @@ local plugins = {
     config = function ()
       require("plugins.feline")
     end
+  },
+  -- Lsp
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "nvim-lua/lsp_extensions.nvim",
+      "RishabhRD/popfix",
+      "RishabhRD/nvim-lsputils",
+    },
+    config = function ()
+      require('plugins.lsp')
+    end
+  },
+  -- NvimCmp
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/nvim-cmp",
+      "onsails/lspkind-nvim",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "hrsh7th/cmp-nvim-lsp-document-symbol"
+    },
+    config = function ()
+      require('plugins.cmp')
+    end
+  },
+  --Snippets
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = {
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets"
+    }
+  },
+  -- Renamer
+  {
+    "filipdutescu/renamer.nvim",
+    config = function ()
+      require('renamer').setup()
+    end
+  },
+  -- Telescope
+  {
+    "Usuim/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
+      "nyarthan/telescope-code-actions.nvim"
+    },
+    config = function ()
+      require('plugins.telescope')
+    end
   }
 }
 

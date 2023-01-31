@@ -1,5 +1,5 @@
 -- Normal - Insert
-vim.cmd([[:amenu 90.100 Usuim.Go\ to\ Definition <cmd>:GoToDef<CR>]])
+vim.cmd([[:amenu 90.100 Usuim.Go\ to\ Definition <cmd>:lua vim.lsp.buf.definition()<CR>]])
 vim.cmd([[:amenu 90.100 Usuim.Go\ to\ Type\ Definition <cmd>:lua vim.lsp.buf.type_definition()<CR>]])
 vim.cmd([[:amenu 90.100 Usuim.Go\ to\ Implementations <cmd>:Telescope lsp_implementations<CR>]])
 vim.cmd([[:amenu 90.100 Usuim.Go\ to\ References <cmd>:Telescope lsp_references<CR>]])
