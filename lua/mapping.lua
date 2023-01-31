@@ -89,3 +89,13 @@ map("i", "<C-ScrollWheelDown>", "<c-o>:BufferLineMovePrev<CR>")
 map("n", "<RightMouse>", "<cmd>:popup Usuim<CR>")
 map("i", "<RightMouse>", "<cmd>:popup Usuim<CR>")
 map("v", "<RightMouse>", "<cmd>:popup VUsuim<CR>")
+
+-- Commenter (alacritty - gnome-terminal)
+map("n", "<C-_>", ":CommentToggle<CR>")
+map("i", "<C-_>", "<c-o>:CommentToggle<CR>")
+map("v", "<C-_>", ":'<,'>CommentToggle<CR>")
+
+-- Commenter (kitty - xterm)
+map("n", "<C-7>", ":CommentToggle<CR>")
+map("i", "<C-7>", "<c-o>:CommentToggle<CR>")
+map("v", "<C-7>", ":'<,'>CommentToggle<CR>")

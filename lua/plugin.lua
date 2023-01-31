@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+
   -- Onedark theme
   {
     "navarasu/onedark.nvim",
@@ -24,6 +25,7 @@ local plugins = {
       require('onedark').load()
     end,
   },
+
   --NvimTree
   {
     'Usuim/nvim-tree.lua',
@@ -32,6 +34,7 @@ local plugins = {
       require('plugins.nvimtree')
     end
   },
+
   --Terminal
   {
     "Usuim/toggleterm.nvim",
@@ -39,6 +42,7 @@ local plugins = {
   {
     "voldikss/vim-floaterm"
   },
+
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
@@ -47,6 +51,7 @@ local plugins = {
       require("plugins.treesitter")
     end
   },
+
   -- Dashboard
   {
     "Usuim/dashboard-nvim",
@@ -54,6 +59,7 @@ local plugins = {
       require("plugins.dashboard")
     end
   },
+
   -- Bufferline
   {
     "akinsho/bufferline.nvim",
@@ -64,6 +70,7 @@ local plugins = {
       require("plugins.bufferline")
     end
   },
+
   -- Feline bar
   {
     "feline-nvim/feline.nvim",
@@ -71,6 +78,7 @@ local plugins = {
       require("plugins.feline")
     end
   },
+
   -- Lsp
   {
     "neovim/nvim-lspconfig",
@@ -83,6 +91,7 @@ local plugins = {
       require('plugins.lsp')
     end
   },
+
   -- NvimCmp
   {
     "hrsh7th/nvim-cmp",
@@ -100,6 +109,7 @@ local plugins = {
       require('plugins.cmp')
     end
   },
+
   --Snippets
   {
     "L3MON4D3/LuaSnip",
@@ -108,6 +118,7 @@ local plugins = {
       "rafamadriz/friendly-snippets"
     }
   },
+
   -- Renamer
   {
     "filipdutescu/renamer.nvim",
@@ -115,6 +126,7 @@ local plugins = {
       require('renamer').setup()
     end
   },
+
   -- Telescope
   {
     "Usuim/telescope.nvim",
@@ -125,6 +137,48 @@ local plugins = {
     },
     config = function ()
       require('plugins.telescope')
+    end
+  },
+
+  -- Nvim comment
+  {
+    "terrortylor/nvim-comment",
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring"
+    },
+    config = function ()
+      require('plugins.comment')
+    end
+  },
+
+  -- Neoformat
+  {
+    "sbdchd/neoformat"
+  },
+
+  -- Trim on save
+  {
+    "cappyzawa/trim.nvim",
+    config = function ()
+      require('trim').setup({
+        disable = {},
+        patterns = {
+          [[%s/\s\+$//e]],
+          [[%s/\($\n\s*\)\+\%$//]],
+          [[%s/\%^\n\+//]],
+        },
+      })
+    end
+  },
+
+  -- Autopairs
+  {
+    "windwp/nvim-autopairs",
+    dependencies = {
+      "tpope/vim-surround"
+    },
+    config = function ()
+      require('nvim-autopairs').setup()
     end
   }
 }
