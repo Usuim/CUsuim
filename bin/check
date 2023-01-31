@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ -z "$(ls -A .)" ]; then
+   echo "Empty"
+else
+   echo "Not Empty"
+fi

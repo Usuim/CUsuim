@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 0 ]] ; then
+    echo 'Use: init_cmake_default -n NAME -v CPP VERSION (11,14,17,20)'
+    exit 1
+fi
+
+while getopts n:v: flag
+do
+    case "${flag}" in
+         n) name=${OPTARG};;
+         v) cppv=${OPTARG};;
+    esac
+done
+
+mkdir src include lib build
+
+echo "cmake_minimum_required(VERSION 3.7)
+project($name)
+
+file(GLOB SRC
+  # Add your source files here
+  # you can also use src/*.cpp and src/subdir/*.cpp to automatically add the source files
+  src/main.cpp
+  src/HelloWorld.cpp
+)
+
+set (CMAKE_CXX_STANDARD $cppv)
+
+include_directories(\${CMAKE_SOURCE_DIR}/include)
+link_directories(\${CMAKE_SOURCE_DIR}/lib)
+
+add_executable(app \${SRC})
+
+# if you have a shared or static library, you can add the library here
+# example: lib/libfoo.so -> target_link_libraries(app foo)
+# and you can also link system libraries
+# example: /usr/lib/libmagic.so -> target_link_libraries(app magic)
+target_link_libraries(app)
+" >> CMakeLists.txt
+
+echo "#include <HelloWorld.hpp>
+#include <iostream>
+
+int main() {
+  HelloWorld *hello = new HelloWorld(\"Hello World!\");
+  std::cout << (hello->hello()) << std::endl;
+  return 0;
+}
+" >> src/main.cpp
+
+echo "#include <iostream>
+
+class HelloWorld {
+  public:
+    HelloWorld(std::string _name);
+    std::string hello();
+  private:
+    std::string m_msg;
+};
+" >> include/HelloWorld.hpp
+
+echo "#include <HelloWorld.hpp>
+
+HelloWorld::HelloWorld(std::string _name) {
+  this->m_msg = _name;
+}
+
+std::string HelloWorld::hello() {
+  return this->m_msg;
+}
+" >> src/HelloWorld.cpp
+
+echo '{
+  "run": "cd build && make && ./app",
+
+  "build": "mkdir -p build/ && cd build && cmake .. && make",
+
+  "upclangd": "mkdir -p build && cd build && cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .. && mv compile_commands.json .."
+}
+' >> .cusuim.json
+
+cd build
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
+mv compile_commands.json ..

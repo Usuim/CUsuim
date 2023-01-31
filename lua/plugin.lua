@@ -180,6 +180,10 @@ local plugins = {
     config = function ()
       require('nvim-autopairs').setup()
     end
+  },
+  -- Notifications
+  {
+    "rcarriga/nvim-notify"
   }
 }
 
