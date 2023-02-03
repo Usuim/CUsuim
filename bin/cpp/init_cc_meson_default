@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 0 ]] ; then
+    echo 'Use: init_cc_meson_default -n NAME -v CPP VERSION (11,14,17,20)'
+    exit 1
+fi
+
+while getopts n:v: flag
+do
+    case "${flag}" in
+         n) name=${OPTARG};;
+         v) cppv=${OPTARG};;
+    esac
+done
+
+mkdir src include lib build
+
+echo "# Project settings
+project(
+  '$name',
+  'cpp',
+  version: '1.0.0',
+  default_options : 'cpp_std=c++$cppv'
+)
+
+# Source files
+source_files = [
+  'src/main.cpp',
+  'src/HelloWorld.cpp'
+]
+
+libraries = []
+
+# Include directory
+incdir = include_directories('include')
+
+# To link shared or static object in ./lib
+# For example if you have lib/libsum.so or lib/libsum.a, you have to uncomment the following code
+
+# libdir = '@0@/lib'.format(meson.current_source_dir())
+# libraries = [
+#   cc.find_library('sum', dirs : libdir),
+# ]
+
+# Important: if you change for example ( libsum.so -> libsum.a ) or ( libsum.a -> libsum.so ), you have to reconfigure the meson build folder: meson setup --reconfigure build
+
+# Executable options
+executable(
+  meson.project_name(),
+  source_files,
+  dependencies: libraries,
+  include_directories : incdir
+)
+" >> meson.build
+
+echo "#include <iostream>
+#include \"HelloWorld.hpp\"
+
+int main() {
+  HelloWorld *hello = new HelloWorld(\"Hello World!\");
+  std::cout << (hello->hello()) << std::endl;
+  return 0;
+}
+" >> src/main.cpp
+
+echo "#ifndef HELLOWORLD_HPP
+#define HELLOWORLD_HPP
+
+#include <iostream>
+
+class HelloWorld {
+  public:
+    HelloWorld(std::string _msg);
+    std::string hello();
+  private:
+    std::string m_msg;
+};
+
+#endif
+" >> include/HelloWorld.hpp
+
+echo "#include \"HelloWorld.hpp\"
+
+HelloWorld::HelloWorld(std::string _msg) {
+  this->m_msg = _msg;
+}
+
+std::string HelloWorld::hello() {
+  return this->m_msg;
+}
+" >> src/HelloWorld.cpp
+
+echo "{
+  \"run\": \"cd build && ./$name\",
+
+  \"build\": \"mkdir -p build/ && ninja -C build\",
+
+  \"buildandrun\": \"mkdir -p build/ && cd build && ninja && ./$name\",
+
+  \"upclangd\": \"mkdir -p build && cd build/ && ninja -t compdb -x c_COMPILER cpp_COMPILER > compile_commands.json && mv compile_commands.json ..\"
+}
+" >> .cusuim.json
+
+
+meson build
+cd build
+ninja -t compdb -x c_COMPILER cpp_COMPILER > compile_commands.json
+mv compile_commands.json ..

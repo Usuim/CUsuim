@@ -68,7 +68,7 @@ function createProject(cmd)
 
   if status == "Empty" then
     local currentDir = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-    os.execute(string.format("~/.config/cusuim/bin/%s -n %s -v 17", cmd, currentDir))
+    vim.cmd(string.format(":call system('~/.config/cusuim/bin/%s -n %s -v 17')", cmd, currentDir))
 
 
     vim.notify("Project created", "", {
