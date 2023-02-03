@@ -17,7 +17,7 @@ g.dashboard_custom_header = {
 
 g.dashboard_default_executive ='telescope'
 g.dashboard_custom_section = {
-    a = {description = {"  Init Project"}, command = "popup Projects"},
+    a = {description = {"  Init Project"}, command = "lua Lang_project()"},
     c = {description = {"  Open Project"}, command = "Telescope workspaces"},
     d = {description = {"  Find File"}, command = "Telescope find_files cwd=."},
     e = {description = {"  Color Scheme"}, command = "Telescope colorscheme"},

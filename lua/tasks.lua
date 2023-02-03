@@ -1,3 +1,5 @@
+require('utils.telescope')
+
 function readFile(file)
     local f = assert(io.open(file, "rb"))
     local content = f:read("*all")
@@ -57,8 +59,6 @@ function UpClangd()
   vim.cmd(":FloatermNew --autoclose=0 " .. result)
 end
 
-vim.cmd([[:amenu 110.110 Projects.CMake\ Default\ Project <cmd>:lua createProject("init_cmake_default")<CR>]])
-
 function createProject(cmd)
   local handle = io.popen("~/.config/cusuim/bin/check")
   local result = handle:read("*a")
@@ -81,3 +81,7 @@ function createProject(cmd)
   end
 
 end
+
+vim.cmd([[:amenu 120.90 ProjectLang.C\ Project <cmd>:popup CBuildSystem<CR>]])
+vim.cmd([[:amenu 120.90 ProjectLang.C++\ Project <cmd>:lua CCTemplates()<CR>]])
+vim.cmd([[:amenu 120.90 ProjectLang.D\ Project <cmd>:echo "Coming Soon"<CR>]])

@@ -1,3 +1,5 @@
+vim.cmd([[aunmenu PopUp]])
+
 -- Normal - Insert
 vim.cmd([[:amenu 90.100 Usuim.Go\ to\ Definition <cmd>:lua vim.lsp.buf.definition()<CR>]])
 vim.cmd([[:amenu 90.100 Usuim.Go\ to\ Type\ Definition <cmd>:lua vim.lsp.buf.type_definition()<CR>]])
@@ -32,8 +34,6 @@ vim.cmd([[:imenu 90.110 VUsuim.Copy "+y]])
 vim.cmd([[:imenu 90.110 VUsuim.Cut "+x]])
 vim.cmd([[:imenu 90.110 VUsuim.Paste <C-V>]])
 vim.cmd([[:imenu 90.110 VUsuim.Delete "_dd]])
-
-vim.cmd([[aunmenu PopUp]])
 
 -- Tasks
 vim.cmd([[:amenu 100.100 Tasks.Run <cmd>:lua RunCode()<CR>]])
