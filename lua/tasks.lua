@@ -39,7 +39,7 @@ function BuildCode()
 end
 
 function BuildAndRun()
-  local handle = io.popen(string.format("jq -r '.buildandrun' %s", path))
+  local handle = io.popen(string.format("jq -r '.buildAndRun' %s", path))
   local result = handle:read("*a")
   handle:close()
 
@@ -50,6 +50,20 @@ function BuildAndRun()
 
   vim.cmd(":FloatermNew --autoclose=0 " .. result)
 end
+
+function ReconfigureBuildDirectoriy()
+  local handle = io.popen(string.format("jq -r '.reconfigureBuildDir' %s", path))
+  local result = handle:read("*a")
+  handle:close()
+
+  vim.notify("Reconfiguring...", "", {
+    title = notfiy_name,
+    timeout = 500
+  })
+
+  vim.cmd(":FloatermNew --autoclose=0 " .. result)
+end
+
 
 function UpClangd()
   local handle = io.popen(string.format("jq -r '.upclangd' %s", path))
@@ -81,7 +95,3 @@ function createProject(cmd)
   end
 
 end
-
-vim.cmd([[:amenu 120.90 ProjectLang.C\ Project <cmd>:popup CBuildSystem<CR>]])
-vim.cmd([[:amenu 120.90 ProjectLang.C++\ Project <cmd>:lua CCTemplates()<CR>]])
-vim.cmd([[:amenu 120.90 ProjectLang.D\ Project <cmd>:echo "Coming Soon"<CR>]])

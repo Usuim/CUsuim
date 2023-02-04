@@ -95,9 +95,10 @@ echo "{
 
   \"build\": \"mkdir -p build/ && ninja -C build\",
 
-  \"buildandrun\": \"mkdir -p build/ && cd build && ninja && ./$name\",
+  \"buildAndRun\": \"mkdir -p build/ && cd build && ninja && ./$name\",
 
-  \"upclangd\": \"mkdir -p build && cd build/ && ninja -t compdb -x c_COMPILER cpp_COMPILER > compile_commands.json && mv compile_commands.json ..\"
+  \"upclangd\": \"mkdir -p build && cd build/ && ninja -t compdb -x c_COMPILER cpp_COMPILER > compile_commands.json && mv compile_commands.json ..\",
+  \"reconfigureBuildDir\": \"rm -rf ./build && mkdir -p build && meson build\"
 }
 " >> .cusuim.json
 
