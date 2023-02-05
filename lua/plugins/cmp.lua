@@ -145,6 +145,10 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require('lspconfig')['clangd'].setup {
   capabilities = capabilities
 }
+-- DLang
+require('lspconfig')['serve_d'].setup {
+  capabilities = capabilities
+}
  -- CMake
 require('lspconfig')['cmake'].setup {
   capabilities = capabilities
