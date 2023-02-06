@@ -43,7 +43,7 @@ Open_cc_templates = function(opts)
     finder = finders.new_table {
       results = {
         {" Cmake Default Project", "cpp/init_cc_cmake_default"},
-        {" Cmake Gtk4 Project", "cpp/inic_cc_cmake_gtk"},
+        {" Cmake Gtk4 Project", "cpp/init_cc_cmake_gtk"},
         {" Meson Default Project", "cpp/init_cc_meson_default"},
         {" Meson Gtk4 Project", "cpp/init_cc_meson_gtk"}
       },
