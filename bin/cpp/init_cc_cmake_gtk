@@ -50,7 +50,7 @@ echo "#include <iostream>
 
 int main(int argc, char* argv[])
 {
-  auto app = Gtk::Application::create(\"org.gtkmm.$name\");
+  auto app = Gtk::Application::create(\"me.$USER.$name\");
 
   return app->make_window_and_run<HelloWorld>(argc, argv);
 }" >> src/main.cpp
