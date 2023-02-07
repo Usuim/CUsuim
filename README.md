@@ -6,7 +6,7 @@
 
 **otherwise it won't work**
 
-*then i will make it work in any directory*
+**My idea is that this configuration is installed separately so that you can have 2 neovim configurations**
 
 <h1 align="center">Preview</h1>
 
