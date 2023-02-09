@@ -188,6 +188,7 @@ local plugins = {
 }
 
 require("lazy").setup(plugins, {
+  root = vim.fn.stdpath("data") .. "/cusuimLazy",
   lockfile = vim.fn.expand('~/.config/cusuim/lazy-lock.json'),
   performance = {
     reset_packpath = false,
