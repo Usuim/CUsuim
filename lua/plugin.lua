@@ -181,9 +181,18 @@ local plugins = {
       require('nvim-autopairs').setup()
     end
   },
+
   -- Notifications
   {
     "rcarriga/nvim-notify"
+  },
+
+  -- Identline
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function ()
+     require('plugins.ident')
+    end
   }
 }
 
