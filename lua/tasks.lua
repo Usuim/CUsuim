@@ -95,3 +95,9 @@ function createProject(cmd)
   end
 
 end
+
+vim.cmd("command! Run lua RunCode()")
+vim.cmd("command! Build lua BuildCode()")
+vim.cmd("command! BuildAndRun lua BuildAndRun()")
+vim.cmd("command! UpClangd lua UpClangd()")
+vim.cmd("command! ReconfigureBuildDir lua ReconfigureBuildDirectoriy()")
